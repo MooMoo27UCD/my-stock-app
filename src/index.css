@@ -1,6 +1,82 @@
-/* minimal styles */
-:root { --bg:#0b1220; --text:#e8eefc; }
+:root{
+  --bg:#0b1220;
+  --panel:#0f1830;
+  --panel-2:#0c152a;
+  --text:#f2f6ff;         
+  --text-strong:#ffffff;  
+  --muted:#c8d0e8;        
+  --accent:#4da3ff;
+  --ok:#16a34a;
+  --warn:#f59e0b;
+  --danger:#ef4444;
+  --border:#2a3a5d;
+  --ink:#0a0f1e;          
+  --white:#ffffff;
+}
+*{box-sizing:border-box}
 html,body,#root{height:100%}
-body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial}
-.container{max-width:1100px;margin:0 auto;padding:24px 18px 48px}
-.panel{background:#121a2b;border:1px solid #24324d;border-radius:14px;padding:16px}
+body{
+  margin:0;
+  background:radial-gradient(1100px 700px at 8% -10%, rgba(77,163,255,.12), transparent 45%), linear-gradient(150deg, #0a142a 0%, #0b1220 55%, #0a1427 100%);
+  color:var(--text);
+  font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.container{max-width:1100px;margin:0 auto;padding:24px 18px 56px}
+
+h1{font-size:30px;margin:0 0 10px;color:var(--text-strong);letter-spacing:.2px}
+h2{font-size:19px;margin:0 0 12px;color:var(--text-strong)}
+.sub{color:var(--muted);margin-bottom:20px}
+
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px}
+.panel.soft{background:var(--panel-2)}
+
+/* High-contrast light card for results on white */
+.card-light{background:var(--white);color:var(--ink);border:1px solid #d9e0f0;border-radius:12px;padding:12px 14px}
+
+/* Results/readouts – guaranteed readable */
+.result{background:#132347;color:var(--text-strong);border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-weight:700}
+.result.light{background:var(--white);color:var(--ink);border-color:#d9e0f0}
+.result.good{background:rgba(22,163,74,.14);color:#97f5b4;border-color:rgba(22,163,74,.45)}
+.result.warn{background:rgba(245,158,11,.16);color:#ffe19e;border-color:rgba(245,158,11,.45)}
+.result.bad{background:rgba(239,68,68,.16);color:#ffb3b3;border-color:rgba(239,68,68,.45)}
+
+.grid{display:grid;gap:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:860px){.grid2,.grid3{grid-template-columns:1fr}}
+
+label{display:grid;gap:6px;color:#e1e7fb;font-size:13px;font-weight:600}
+input[type="text"],input[type="number"],input[type="date"],input[type="file"],select{
+  background:#0e1730;border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px 12px;outline:none
+}
+input::placeholder{color:#a6b4d7}
+input:focus,select:focus{box-shadow:0 0 0 3px rgba(77,163,255,.35);border-color:#5b86cf}
+
+.btn{background:#162449;color:var(--text);border:1px solid var(--border);border-radius:12px;padding:10px 14px;cursor:pointer;font-weight:700}
+.btn:hover{border-color:#3a5588}
+.btn.primary{background:linear-gradient(180deg,#1e3c70,#152a51);border-color:#3a5588}
+
+.badge{padding:2px 8px;border-radius:999px;font-size:12px;border:1px solid var(--border);color:var(--text)}
+.badge.ok{background:rgba(22,163,74,.18);color:#a3f7bf;border-color:rgba(22,163,74,.5)}
+.badge.warn{background:rgba(245,158,11,.18);color:#ffe9b2;border-color:rgba(245,158,11,.5)}
+
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{border:1px solid var(--border);padding:10px 12px}
+.table th{background:#0f1a33;text-align:left;color:var(--text-strong)}
+.table tr:nth-child(even) td{background:#0d162c}
+
+/* Utilities */
+.muted{color:var(--muted)}
+.strong{color:var(--text-strong);font-weight:800}
+.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;background:#0b1430;border:1px solid var(--border);border-radius:6px;padding:1px 6px}
+hr{border:0;height:1px;background:var(--border);margin:10px 0 14px}
+small{color:var(--muted)}
+
+/* Links */
+a{color:var(--accent);text-underline-offset:2px}
+a:hover{text-decoration:underline}
+
+/* Ensure text inherits correct color in light cards */
+.card-light *, .result.light *{color:inherit}
